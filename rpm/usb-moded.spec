@@ -67,7 +67,8 @@ it loads unloads the relevant usb gadget modules, keeps track
 of the filesystem(s) and notifies about changes on the DBUS
 system bus.
 
-This package contains the developer mode config.
+This package contains the developer mode config, which enables
+usb networking.
 
 %package mtp-mode
 Summary:  USB mode controller - mtp mode config
@@ -106,7 +107,7 @@ of the filesystem(s) and notifies about changes on the DBUS
 system bus.
 
 This package contains the developer mode config for use with 
-the android gadget.
+the android gadget. This will provide usb networking.
 
 %package mtp-mode-android
 Summary:  USB mode controller - android mtp mode config
@@ -128,7 +129,8 @@ Requires: usb-moded-developer-mode
 
 %description usb-moded-defaults
 This package provides the default configuration for usb-moded, so 
-basic functionality is provided
+basic functionality is provided (i.e. usb networking, ask and charging 
+modes)
 
 %package usb-moded-defaults-android
 Summary: USB mode controller - default configuration
@@ -138,8 +140,8 @@ Requires: usb-moded-developer-mode-android
 
 %description usb-moded-defaults-android
 This package provides the default configuration for usb-moded, so 
-basic functionality is provided with the android gadget driver
-
+basic functionality is provided (i.e. usb networking, ask and charging 
+modes with the android gadget driver)
 
 %prep
 %setup -q
