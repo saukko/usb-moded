@@ -1,5 +1,5 @@
 Name:     usb-moded
-Version:    0.63
+Version:  0.63
 Release:  0 
 Summary:  USB mode controller
 Group:    System/System Control
@@ -18,10 +18,9 @@ BuildRequires: pkgconfig(libkmod)
 BuildRequires: doxygen
 BuildRequires: GConf2
 
-Provides: nokia-usb-networking
 Requires: dbus-x11
 Requires: lsof
-#Requires: buteo-mtp
+Requires: usb-moded-configs
 Requires(post): GConf2
 Requires(pre): GConf2
 Requires(preun): GConf2
@@ -73,6 +72,7 @@ This package contains the developer mode config.
 %package mtp-mode
 Summary:  USB mode controller - mtp mode config
 Group:  Config
+Requires: buteo-mtp
 
 %description mtp-mode
 Usb_moded is a daemon to control the USB states. For this
@@ -119,6 +119,27 @@ of the filesystem(s) and notifies about changes on the DBUS
 system bus.
 
 This package contains the mtp mode config.
+
+%package usb-moded-defaults
+Summary: USB mode controller - default configuration
+Group: Config
+Provides: usb-moded-configs
+Requires: usb-moded-developer-mode
+
+%description usb-moded-defaults
+This package provides the default configuration for usb-moded, so 
+basic functionality is provided
+
+%package usb-moded-defaults-android
+Summary: USB mode controller - default configuration
+Group: Config
+Provides: usb-moded-configs
+Requires: usb-moded-developer-mode-android
+
+%description usb-moded-defaults-android
+This package provides the default configuration for usb-moded, so 
+basic functionality is provided with the android gadget driver
+
 
 %prep
 %setup -q
