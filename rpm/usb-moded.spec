@@ -239,3 +239,7 @@ systemctl daemon-reload
 %files mtp-mode-android
 %defattr(-,root,root,-)
 %{_sysconfdir}/usb-moded/dyn-modes/mtp_mode-android.ini
+
+ %files usb-moded-defaults
+
+ %files usb-moded-defaults-android
