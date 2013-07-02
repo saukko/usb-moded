@@ -83,6 +83,18 @@ system bus.
 
 This package contains the mtp mode config.
 
+%package mass-storage-mode
+Summary:  USB mode controller - mass-storage mode config
+Group:  Config
+
+%description mass-storage-mode
+Usb_moded is a daemon to control the USB states. For this
+it loads unloads the relevant usb gadget modules, keeps track
+of the filesystem(s) and notifies about changes on the DBUS
+system bus.
+
+This package contains the mass-storage mode config.
+
 %package adb-mode
 Summary:  USB mode controller - android adb mode config
 Group:  Config
@@ -177,6 +189,7 @@ install -d %{buildroot}/%{_sysconfdir}/usb-moded/run
 install -d %{buildroot}/%{_sysconfdir}/usb-moded/dyn-modes
 install -m 644 -D config/dyn-modes/* %{buildroot}/%{_sysconfdir}/usb-moded/dyn-modes/
 install -m 644 -D config/run/* %{buildroot}/%{_sysconfdir}/usb-moded/run/
+install -m 644 -D config/*.ini %{buildroot}/%{_sysconfdir}/usb-moded/
 install -d $RPM_BUILD_ROOT/lib/systemd/system/multi-user.target.wants/
 ln -s ../%{name}.service $RPM_BUILD_ROOT/lib/systemd/system/multi-user.target.wants/%{name}.service
 
@@ -227,13 +240,17 @@ systemctl daemon-reload
 %{_docdir}/%{name}/html/*
 
 %files developer-mode
-2yy%defattr(-,root,root,-)
+%defattr(-,root,root,-)
 %{_sysconfdir}/usb-moded/dyn-modes/developer_mode.ini
 
 %files mtp-mode
 %defattr(-,root,root,-)
 %{_sysconfdir}/usb-moded/dyn-modes/mtp_mode.ini
 %{_sysconfdir}/usb-moded/run/mtp.ini
+
+%files mass-storage-mode
+%defattr(-,root,root,-)
+%{_sysconfdir}/usb-moded/dyn-modes/mass-storage.ini
 
 %files developer-mode-android
 %defattr(-,root,root,-)
