@@ -143,6 +143,14 @@ This package provides the default configuration for usb-moded, so
 basic functionality is provided (i.e. usb networking, ask and charging 
 modes with the android gadget driver)
 
+%package usb-moded-hw-config-n900
+Summary: USB mode controller HW specific config for N900
+Group: Config
+
+%description usb-moded-hw-config-n900
+This package provides the hw specific onfiguration options for 
+the Nokia N900
+
 %prep
 %setup -q
 
@@ -219,7 +227,7 @@ systemctl daemon-reload
 %{_docdir}/%{name}/html/*
 
 %files developer-mode
-%defattr(-,root,root,-)
+2yy%defattr(-,root,root,-)
 %{_sysconfdir}/usb-moded/dyn-modes/developer_mode.ini
 
 %files mtp-mode
@@ -243,3 +251,8 @@ systemctl daemon-reload
 %files usb-moded-defaults
 
 %files usb-moded-defaults-android
+
+%files usb-moded-hw-config-n900
+%defattr(-,root,root,-)
+%{_sysconfdir}/usb-moded/mass-storage-n900.ini
+%{_sysconfdir}/usb-moded/power-supply-n900.ini
